@@ -1,0 +1,2 @@
+Use WayBackMachine to the related twitter account and you will see the deleted tweet.
+This tweet redirect you to the repository where from the commit history you will see the deleted flag.txt where is the flag.
