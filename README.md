@@ -19,7 +19,7 @@ Material for the Lab49 internal CTF.
 - [x] Add web task 1 source
 - [ ] Add web task 2 source
 - [x] Add OSINT description
-- [ ] Add web server config to serve static content
+- [x] Add web server config to serve static content
 - [ ] Build the binary for Windows
 - [ ] Build the binary for Linux
 - [ ] Deploy web 1 to Heroku
