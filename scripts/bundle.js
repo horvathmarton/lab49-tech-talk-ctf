@@ -2,32 +2,9 @@ const { existsSync, mkdirSync, readFileSync, writeFileSync, readdirSync, copyFil
 const { join } = require('path');
 const { sync: rmdirSync } = require('rimraf');
 
-/** Create the static folder. */
 const staticDir = join(__dirname, '..', 'static');
-if (existsSync(staticDir)) rmdirSync(staticDir);
-mkdirSync(staticDir);
-
-/** Setup the index page. */
 const challengesFolder = join(__dirname, '..', 'challenges');
 const templatesFolder = join(__dirname, '..', 'templates');
-const indexPageTemplate = readFileSync(join(templatesFolder, 'index.html')).toString();
-const links = readdirSync(challengesFolder)
-    .map(folder => `<li><a href="/${folder}">${folder}</a></li>`).join('\n\t\t');
-const indexPage = indexPageTemplate.replaceAll('{{ links }}', links);
-writeFileSync(join(staticDir, 'index.html'), Buffer.from(indexPage));
-
-/** Setup the crypto challenge. */
-bundleCryptoChallenge('crypto', 'Crypto');
-
-/** Setup the first demo challenge. */
-bundleCryptoChallenge('demo-1', 'Demo 1');
-
-/** Setup the osint challenge. */
-bundleOsintChallenge('osint', 'OSINT');
-
-/** Setup the reversing challenge. */
-bundleReversingChallenge('reversing', 'Reverse engineering')
-
 
 function bundleCryptoChallenge(folderName, title) {
     mkdirSync(join(staticDir, folderName));
@@ -76,3 +53,30 @@ function bundleReversingChallenge(folderName, title) {
         .replaceAll('{{ binaries }}', binaries);
     writeFileSync(join(staticDir, folderName, 'index.html'), Buffer.from(page));
 }
+
+function main() {
+    /** Create the static folder. */
+    if (existsSync(staticDir)) rmdirSync(staticDir);
+    mkdirSync(staticDir);
+
+    /** Setup the index page. */
+    const indexPageTemplate = readFileSync(join(templatesFolder, 'index.html')).toString();
+    const links = readdirSync(challengesFolder)
+        .map(folder => `<li><a href="/${folder}">${folder}</a></li>`).join('\n\t\t');
+    const indexPage = indexPageTemplate.replaceAll('{{ links }}', links);
+    writeFileSync(join(staticDir, 'index.html'), Buffer.from(indexPage));
+
+    /** Setup the crypto challenge. */
+    bundleCryptoChallenge('crypto', 'Crypto');
+
+    /** Setup the first demo challenge. */
+    bundleCryptoChallenge('demo-1', 'Demo 1');
+
+    /** Setup the osint challenge. */
+    bundleOsintChallenge('osint', 'OSINT');
+
+    /** Setup the reversing challenge. */
+    bundleReversingChallenge('reversing', 'Reverse engineering');
+}
+
+main();

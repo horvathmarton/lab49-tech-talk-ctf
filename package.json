@@ -18,9 +18,10 @@
   },
   "homepage": "https://github.com/horvathmarton/lab49-tech-talk-ctf#readme",
   "dependencies": {
-    "express": "^4.18.1"
-  },
-  "devDependencies": {
+    "express": "^4.18.1",
     "rimraf": "^3.0.2"
+  },
+  "engines": {
+    "node": "17.x"
   }
 }
