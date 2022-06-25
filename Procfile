@@ -1,0 +1,1 @@
+web: node scripts/bundle.js && node infra/server.js

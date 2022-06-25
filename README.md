@@ -2,6 +2,15 @@
 
 Material for the Lab49 internal CTF.
 
+## Setup
+
+- Run `npm install`.
+
+## Usage
+
+- Run `node scripts/bundle.js` to create the `static` folder.
+- Run `node infra/server.js` to serve the challenges.
+
 ## Plan
 
 - Demo 1: Base64 encoded flag.
@@ -19,8 +28,9 @@ Material for the Lab49 internal CTF.
 - [x] Add web task 1 source
 - [ ] Add web task 2 source
 - [x] Add OSINT description
-- [ ] Add web server config to serve static content
+- [x] Add web server config to serve static content
 - [ ] Build the binary for Windows
 - [ ] Build the binary for Linux
 - [ ] Deploy web 1 to Heroku
 - [ ] Deploy web 2 to Heroku
+- [ ] Create action CD

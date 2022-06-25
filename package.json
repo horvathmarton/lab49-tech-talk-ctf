@@ -1,0 +1,27 @@
+{
+  "name": "tech-talk-ctf",
+  "version": "1.0.0",
+  "description": "Material for the Lab49 internal CTF.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node infra/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/horvathmarton/lab49-tech-talk-ctf.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/horvathmarton/lab49-tech-talk-ctf/issues"
+  },
+  "homepage": "https://github.com/horvathmarton/lab49-tech-talk-ctf#readme",
+  "dependencies": {
+    "express": "^4.18.1",
+    "rimraf": "^3.0.2"
+  },
+  "engines": {
+    "node": "17.x"
+  }
+}
