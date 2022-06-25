@@ -55,16 +55,21 @@ function bundleReversingChallenge(folderName, title) {
 
   const binaryOptions = [
     // { os: 'Windows', file: 'windows-binary' },
+    { os: "Windows", file: "osx-binary" },
     { os: "Mac", file: "osx-binary" },
+    { os: "Linux", file: "osx-binary" },
     // { os: 'Linux', file: 'unix-binary' },
   ];
 
   binaryOptions.forEach(({ file }) =>
     copyFileSync(join(folder, file), join(staticDir, folderName, file))
   );
-  const binaries = binaryOptions.map(
-    ({ os, file }) => `<li><a href=${file}>${os}</a></li>`
-  );
+  const binaries = binaryOptions
+    .map(
+      ({ os, file }) =>
+        `<li class="flex items-center"><a href=${file} class="no-underline hover:bg-secondary hover:text-neutral">${os}</a></li>`
+    )
+    .join("\n\t\t");
 
   const page = pageTemplate
     .replaceAll("{{ title }}", title)
@@ -75,11 +80,16 @@ function bundleReversingChallenge(folderName, title) {
 
 function bundleStaticWebChallenge(folderName, title) {
   const folder = join(challengesFolder, folderName, "app");
+  const description = readFileSync(
+    join(folder, "..", "description.txt")
+  ).toString();
 
   copyFolderSync(folder, join(staticDir, folderName));
 
   const indexFileTemplate = readFileSync(join(folder, "index.html")).toString();
-  const indexFile = indexFileTemplate.replaceAll("{{ title }}", title);
+  const indexFile = indexFileTemplate
+    .replaceAll("{{ title }}", title)
+    .replaceAll("{{ description }}", description);
   writeFileSync(join(staticDir, folderName, "index.html"), indexFile);
 }
 
@@ -103,10 +113,19 @@ function main() {
     join(templatesFolder, "index.html")
   ).toString();
   const links = readdirSync(challengesFolder)
-    .map((folder) => `<li><a href="/${folder}">${folder}</a></li>`)
+    .map(
+      (folder) =>
+        `<li class="flex items-center"><a href="/${folder}" class="no-underline hover:bg-secondary hover:text-neutral">${folder}</a></li>`
+    )
     .join("\n\t\t");
   const indexPage = indexPageTemplate.replaceAll("{{ links }}", links);
   writeFileSync(join(staticDir, "index.html"), Buffer.from(indexPage));
+
+  /** Copy stylesheet. */
+  copyFileSync(
+    join(__dirname, "..", "styles/tailwind.css"),
+    join(staticDir, "tailwind.css")
+  );
 
   /** Setup the crypto challenge. */
   bundleCryptoChallenge("crypto", "Crypto");

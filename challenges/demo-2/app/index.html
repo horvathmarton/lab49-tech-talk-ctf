@@ -5,10 +5,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{{ title }}</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/tailwind.css" />
     <script src="./auth.js"></script>
   </head>
-  <body>
-    <form>
+  <body
+    class="grid h-screen place-items-center prose font-press-start max-w-full mx-20"
+  >
+    <h1 class="text-primary">{{ title }}</h1>
+
+    <h2>{{ description }}</h2>
+
+    <div class="grid">
       <label for="username"><b>Username</b></label>
       <input
         type="text"
@@ -18,7 +29,7 @@
         required
       />
 
-      <label for="password"><b>Password</b></label>
+      <label for="password" class="mt-8"><b>Password</b></label>
       <input
         type="password"
         placeholder="Enter Password"
@@ -26,8 +37,13 @@
         id="password"
         required
       />
-    </form>
 
-    <button onclick="login()">Login</button>
+      <button onclick="login()" class="btn btn-primary mt-10">Login</button>
+    </div>
+
+    <p>
+      (This is a web challenge, you goal is to bypass the authentication of the
+      site and log in as a user.)
+    </p>
   </body>
 </html>
