@@ -1,82 +1,133 @@
-const { existsSync, mkdirSync, readFileSync, writeFileSync, readdirSync, copyFileSync } = require('fs');
-const { join } = require('path');
-const { sync: rmdirSync } = require('rimraf');
+const {
+  existsSync,
+  mkdirSync,
+  readFileSync,
+  writeFileSync,
+  readdirSync,
+  copyFileSync,
+} = require("fs");
+const { join } = require("path");
+const { execSync } = require("child_process");
+const { sync: rmdirSync } = require("rimraf");
+const { copyFolderSync } = require("./utils");
 
-const staticDir = join(__dirname, '..', 'static');
-const challengesFolder = join(__dirname, '..', 'challenges');
-const templatesFolder = join(__dirname, '..', 'templates');
+const staticDir = join(__dirname, "..", "static");
+const challengesFolder = join(__dirname, "..", "challenges");
+const templatesFolder = join(__dirname, "..", "templates");
 
 function bundleCryptoChallenge(folderName, title) {
-    mkdirSync(join(staticDir, folderName));
-    const folder = join(challengesFolder, folderName);
-    const pageTemplate = readFileSync(join(templatesFolder, 'crypto.html')).toString();
-    const description = readFileSync(join(folder, 'description.txt')).toString();
-    const ciphertext = readFileSync(join(folder, 'ciphertext.txt')).toString();
+  mkdirSync(join(staticDir, folderName));
+  const folder = join(challengesFolder, folderName);
+  const pageTemplate = readFileSync(
+    join(templatesFolder, "crypto.html")
+  ).toString();
+  const description = readFileSync(join(folder, "description.txt")).toString();
+  const ciphertext = readFileSync(join(folder, "ciphertext.txt")).toString();
 
-    const page = pageTemplate
-        .replaceAll('{{ title }}', title)
-        .replaceAll('{{ description }}', description)
-        .replaceAll('{{ ciphertext }}', ciphertext);
-    writeFileSync(join(staticDir, folderName, 'index.html'), Buffer.from(page));
+  const page = pageTemplate
+    .replaceAll("{{ title }}", title)
+    .replaceAll("{{ description }}", description)
+    .replaceAll("{{ ciphertext }}", ciphertext);
+  writeFileSync(join(staticDir, folderName, "index.html"), Buffer.from(page));
 }
 
 function bundleOsintChallenge(folderName, title) {
-    mkdirSync(join(staticDir, folderName));
-    const folder = join(challengesFolder, folderName);
-    const pageTemplate = readFileSync(join(templatesFolder, 'osint.html')).toString();
-    const description = readFileSync(join(folder, 'description.txt')).toString();
+  mkdirSync(join(staticDir, folderName));
+  const folder = join(challengesFolder, folderName);
+  const pageTemplate = readFileSync(
+    join(templatesFolder, "osint.html")
+  ).toString();
+  const description = readFileSync(join(folder, "description.txt")).toString();
 
-    const page = pageTemplate
-        .replaceAll('{{ title }}', title)
-        .replaceAll('{{ description }}', description);
-    writeFileSync(join(staticDir, folderName, 'index.html'), Buffer.from(page));
+  const page = pageTemplate
+    .replaceAll("{{ title }}", title)
+    .replaceAll("{{ description }}", description);
+  writeFileSync(join(staticDir, folderName, "index.html"), Buffer.from(page));
 }
 
 function bundleReversingChallenge(folderName, title) {
-    mkdirSync(join(staticDir, folderName));
-    const folder = join(challengesFolder, folderName);
-    const pageTemplate = readFileSync(join(templatesFolder, 'reversing.html')).toString();
-    const description = readFileSync(join(folder, 'description.txt')).toString();
+  mkdirSync(join(staticDir, folderName));
+  const folder = join(challengesFolder, folderName);
+  const pageTemplate = readFileSync(
+    join(templatesFolder, "reversing.html")
+  ).toString();
+  const description = readFileSync(join(folder, "description.txt")).toString();
 
-    const binaryOptions = [
-        // { os: 'Windows', file: 'windows-binary' },
-        { os: 'Mac', file: 'osx-binary' },
-        // { os: 'Linux', file: 'unix-binary' },
-    ]
+  const binaryOptions = [
+    // { os: 'Windows', file: 'windows-binary' },
+    { os: "Mac", file: "osx-binary" },
+    // { os: 'Linux', file: 'unix-binary' },
+  ];
 
-    binaryOptions.forEach(({ file }) => copyFileSync(join(folder, file), join(staticDir, folderName, file)))
-    const binaries = binaryOptions.map(({ os, file }) => `<li><a href=${file}>${os}</a></li>`)
+  binaryOptions.forEach(({ file }) =>
+    copyFileSync(join(folder, file), join(staticDir, folderName, file))
+  );
+  const binaries = binaryOptions.map(
+    ({ os, file }) => `<li><a href=${file}>${os}</a></li>`
+  );
 
-    const page = pageTemplate
-        .replaceAll('{{ title }}', title)
-        .replaceAll('{{ description }}', description)
-        .replaceAll('{{ binaries }}', binaries);
-    writeFileSync(join(staticDir, folderName, 'index.html'), Buffer.from(page));
+  const page = pageTemplate
+    .replaceAll("{{ title }}", title)
+    .replaceAll("{{ description }}", description)
+    .replaceAll("{{ binaries }}", binaries);
+  writeFileSync(join(staticDir, folderName, "index.html"), Buffer.from(page));
+}
+
+function bundleStaticWebChallenge(folderName, title) {
+  const folder = join(challengesFolder, folderName, "app");
+
+  copyFolderSync(folder, join(staticDir, folderName));
+
+  const indexFileTemplate = readFileSync(join(folder, "index.html")).toString();
+  const indexFile = indexFileTemplate.replaceAll("{{ title }}", title);
+  writeFileSync(join(staticDir, folderName, "index.html"), indexFile);
+}
+
+function bundleSpaWebChallenge(folderName, title) {
+  const appFolder = join(challengesFolder, folderName, "app");
+
+  execSync(`PUBLIC_URL=/${folderName} npm run bundle`, {
+    cwd: appFolder,
+  });
+
+  copyFolderSync(join(appFolder, "build"), join(staticDir, folderName));
 }
 
 function main() {
-    /** Create the static folder. */
-    if (existsSync(staticDir)) rmdirSync(staticDir);
-    mkdirSync(staticDir);
+  /** Create the static folder. */
+  if (existsSync(staticDir)) rmdirSync(staticDir);
+  mkdirSync(staticDir);
 
-    /** Setup the index page. */
-    const indexPageTemplate = readFileSync(join(templatesFolder, 'index.html')).toString();
-    const links = readdirSync(challengesFolder)
-        .map(folder => `<li><a href="/${folder}">${folder}</a></li>`).join('\n\t\t');
-    const indexPage = indexPageTemplate.replaceAll('{{ links }}', links);
-    writeFileSync(join(staticDir, 'index.html'), Buffer.from(indexPage));
+  /** Setup the index page. */
+  const indexPageTemplate = readFileSync(
+    join(templatesFolder, "index.html")
+  ).toString();
+  const links = readdirSync(challengesFolder)
+    .map((folder) => `<li><a href="/${folder}">${folder}</a></li>`)
+    .join("\n\t\t");
+  const indexPage = indexPageTemplate.replaceAll("{{ links }}", links);
+  writeFileSync(join(staticDir, "index.html"), Buffer.from(indexPage));
 
-    /** Setup the crypto challenge. */
-    bundleCryptoChallenge('crypto', 'Crypto');
+  /** Setup the crypto challenge. */
+  bundleCryptoChallenge("crypto", "Crypto");
 
-    /** Setup the first demo challenge. */
-    bundleCryptoChallenge('demo-1', 'Demo 1');
+  /** Setup the first demo challenge. */
+  bundleCryptoChallenge("demo-1", "Demo 1");
 
-    /** Setup the osint challenge. */
-    bundleOsintChallenge('osint', 'OSINT');
+  /** Setup the second demo challenge. */
+  bundleStaticWebChallenge("demo-2", "Demo 2");
 
-    /** Setup the reversing challenge. */
-    bundleReversingChallenge('reversing', 'Reverse engineering');
+  /** Setup the osint challenge. */
+  bundleOsintChallenge("osint", "OSINT");
+
+  /** Setup the reversing challenge. */
+  bundleReversingChallenge("reversing", "Reverse engineering");
+
+  /** Setup the first web challenge. */
+  bundleSpaWebChallenge("web-1", "Web one");
+
+  /** Setup the second web challenge. */
+  bundleStaticWebChallenge("web-2", "Web two");
 }
 
 main();

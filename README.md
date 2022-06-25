@@ -24,13 +24,16 @@ Material for the Lab49 internal CTF.
 ## TODO
 
 - [x] Add example task 1
-- [ ] Add example task 2
+- [x] Add example task 2
 - [x] Add web task 1 source
-- [ ] Add web task 2 source
+- [x] Add web task 2 source
 - [x] Add OSINT description
 - [x] Add web server config to serve static content
 - [ ] Build the binary for Windows
 - [ ] Build the binary for Linux
-- [ ] Deploy web 1 to Heroku
-- [ ] Deploy web 2 to Heroku
+- [ ] ~Deploy web 1 to Heroku~
+- [ ] ~Deploy web 2 to Heroku~
+- [ ] Add CSS to make the site look nicer
+- [ ] Unify the descriptions and flags, add explanation to challenge types
+- [ ] Add hints
 - [ ] Create action CD
