@@ -7,7 +7,7 @@ export default function App() {
 
   return (
     <div className="App">
-      <h1>Will you find the flags?</h1>
+      <h1 class="text-primary">Will you find the flags?</h1>
       <p>
         To complete your final quests
         <br />

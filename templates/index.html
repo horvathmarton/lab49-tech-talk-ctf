@@ -1,23 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Lab49 CTF</title>
-</head>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/tailwind.css" />
+  </head>
 
-<body>
-
-    <h1>Welcome to the Lab49 CTF!</h1>
+  <body
+    class="grid h-screen place-items-center prose font-press-start max-w-full mx-20"
+  >
+    <h1 class="text-primary">Welcome to the Lab49 CTF!</h1>
 
     <h2>Please select a challenge:</h2>
 
-    <ul>
-        {{ links }}
+    <ul class="menu bg-base-100 w-56 p-2 rounded-box">
+      {{ links }}
     </ul>
-
-</body>
-
+  </body>
 </html>
