@@ -1,1 +1,1 @@
-flag{hashing_is_not_encryption}
+LAB49{Puma123}

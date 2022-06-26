@@ -1,3 +1,3 @@
 #! /bin/bash
 
-strings osx-binary | grep flag{
+strings osx-binary | grep LAB49{

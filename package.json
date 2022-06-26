@@ -6,7 +6,7 @@
   "scripts": {
     "start": "npm run build:style && npm run bundle && npm run serve",
     "serve": "node infra/server.js",
-    "bundle": "node scripts/bundle.js",
+    "bundle": "SCOREBOARD_URL='https://lab49-ctf-scoreboard-staging.herokuapp.com/' node scripts/bundle.js",
     "build:style": "tailwindcss -i ./styles/input.css -o ./styles/tailwind.css",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

@@ -11,6 +11,10 @@ const { execSync } = require("child_process");
 const { sync: rmdirSync } = require("rimraf");
 const { copyFolderSync } = require("./utils");
 
+const { SCOREBOARD_URL } = process.env;
+
+if (!SCOREBOARD_URL) throw new Error("SCOREBOARD_URL is not defined.");
+
 const staticDir = join(__dirname, "..", "static");
 const challengesFolder = join(__dirname, "..", "challenges");
 const templatesFolder = join(__dirname, "..", "templates");
@@ -118,7 +122,9 @@ function main() {
         `<li class="flex items-center"><a href="/${folder}" class="no-underline hover:bg-secondary hover:text-neutral">${folder}</a></li>`
     )
     .join("\n\t\t");
-  const indexPage = indexPageTemplate.replaceAll("{{ links }}", links);
+  const indexPage = indexPageTemplate
+    .replaceAll("{{ scoreboardUrl }}", SCOREBOARD_URL)
+    .replaceAll("{{ links }}", links);
   writeFileSync(join(staticDir, "index.html"), Buffer.from(indexPage));
 
   /** Copy stylesheet. */

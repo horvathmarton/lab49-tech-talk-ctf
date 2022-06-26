@@ -1,1 +1,1 @@
-lab49{crypto_means_cryptography_here}
+LAB49{crypt0_m34n5_crypt0gr4phy_h3r3}

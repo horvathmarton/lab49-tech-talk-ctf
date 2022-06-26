@@ -2221,6 +2221,22 @@ body[dir="rtl"] .checkbox:checked,
   visibility: visible;
 }
 
+.absolute {
+  position: absolute;
+}
+
+.top-7 {
+  top: 1.75rem;
+}
+
+.right-7 {
+  right: 1.75rem;
+}
+
+.left-7 {
+  left: 1.75rem;
+}
+
 .row-span-6 {
   grid-row: span 6 / span 6;
 }
@@ -2287,6 +2303,11 @@ body[dir="rtl"] .checkbox:checked,
   padding: 0.5rem;
 }
 
+.px-1 {
+  padding-left: 0.25rem;
+  padding-right: 0.25rem;
+}
+
 .font-press-start {
   font-family: "Press Start 2P", cursive;
 }
@@ -2294,6 +2315,11 @@ body[dir="rtl"] .checkbox:checked,
 .text-primary {
   --tw-text-opacity: 1;
   color: hsl(var(--p) / var(--tw-text-opacity));
+}
+
+.text-neutral {
+  --tw-text-opacity: 1;
+  color: hsl(var(--n) / var(--tw-text-opacity));
 }
 
 .no-underline {

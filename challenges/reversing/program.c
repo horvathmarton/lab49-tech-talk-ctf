@@ -8,7 +8,7 @@ int main() {
     scanf("%s", password);
     printf("\n");
 
-    char* flag = "flag{you_are_officially_a_reverse_engineer_now_so_you_are_a_reenigne}";
+    char* flag = "LAB49{you_are_officially_a_reverse_engineer_now_so_you_are_a_reenigne}";
     if (strcmp(password, flag) == 0) {
         printf("Logged in successfully.\n\n");
         printf("The flag is %s\n\n", flag);
