@@ -8,18 +8,19 @@ Material for the Lab49 internal CTF.
 
 ## Usage
 
-- Run `node scripts/bundle.js` to create the `static` folder.
-- Run `node infra/server.js` to serve the challenges.
+- Run `npm run build:style` if you change anything in the styling.
+- Run `npm run bundle` to create the `static` folder.
+- Run `npm run serve` to serve the challenges.
 
 ## Plan
 
 - Demo 1: Base64 encoded flag.
-- Demo 2: ???
+- Demo 2: Client side auth
 - Crypto: Base64 matrjoska.
 - OSINT: Twitter with wayback machine.
 - Reversing: Password check with password compiled into the binary.
 - Web 1: Flag hidden in the elements of the site (HTML, CSS, JS, robots.txt)
-- Web 2: ???
+- Web 2: Client side auth with weak hashed password
 
 ## TODO
 
@@ -29,11 +30,17 @@ Material for the Lab49 internal CTF.
 - [x] Add web task 2 source
 - [x] Add OSINT description
 - [x] Add web server config to serve static content
-- [ ] Build the binary for Windows
-- [ ] Build the binary for Linux
 - [ ] ~Deploy web 1 to Heroku~
 - [ ] ~Deploy web 2 to Heroku~
-- [ ] Add CSS to make the site look nicer
-- [ ] Unify the descriptions and flags, add explanation to challenge types
+- [x] Add CSS to make the site look nicer
+- [x] Add challenge type explanations
+- [x] Unify flag formats
 - [ ] Add hints
+- [ ] Build the binary for Linux
+- [ ] Build the binary for Windows
+- [ ] Unify the descriptions
 - [ ] Create action CD
+- [ ] Align titles with the navigation buttons
+- [ ] Add submit button to challenges
+- [ ] Align longer descriptions
+- [ ] Use the same challenge name as in the list
