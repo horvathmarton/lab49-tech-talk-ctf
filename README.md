@@ -36,11 +36,11 @@ Material for the Lab49 internal CTF.
 - [x] Add challenge type explanations
 - [x] Unify flag formats
 - [ ] Add hints
-- [ ] Build the binary for Linux
+- [x] Build the binary for Linux
 - [ ] Build the binary for Windows
 - [ ] Unify the descriptions
 - [ ] Create action CD
 - [ ] Align titles with the navigation buttons
 - [ ] Add submit button to challenges
-- [ ] Align longer descriptions
-- [ ] Use the same challenge name as in the list
+- [x] Align longer descriptions
+- [x] Use the same challenge name as in the list

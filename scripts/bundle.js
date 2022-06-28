@@ -61,8 +61,7 @@ function bundleReversingChallenge(folderName, title) {
     // { os: 'Windows', file: 'windows-binary' },
     { os: "Windows", file: "osx-binary" },
     { os: "Mac", file: "osx-binary" },
-    { os: "Linux", file: "osx-binary" },
-    // { os: 'Linux', file: 'unix-binary' },
+    { os: "Linux", file: "linux-binary" },
   ];
 
   binaryOptions.forEach(({ file }) =>
@@ -134,25 +133,25 @@ function main() {
   );
 
   /** Setup the crypto challenge. */
-  bundleCryptoChallenge("crypto", "Crypto");
+  bundleCryptoChallenge("crypto", "crypto");
 
   /** Setup the first demo challenge. */
-  bundleCryptoChallenge("demo-1", "Demo 1");
+  bundleCryptoChallenge("demo-1", "demo-1");
 
   /** Setup the second demo challenge. */
-  bundleStaticWebChallenge("demo-2", "Demo 2");
+  bundleStaticWebChallenge("demo-2", "demo-2");
 
   /** Setup the osint challenge. */
-  bundleOsintChallenge("osint", "OSINT");
+  bundleOsintChallenge("osint", "osint");
 
   /** Setup the reversing challenge. */
-  bundleReversingChallenge("reversing", "Reverse engineering");
+  bundleReversingChallenge("reversing", "reversing");
 
   /** Setup the first web challenge. */
-  bundleSpaWebChallenge("web-1", "Web one");
+  bundleSpaWebChallenge("web-1", "web-1");
 
   /** Setup the second web challenge. */
-  bundleStaticWebChallenge("web-2", "Web two");
+  bundleStaticWebChallenge("web-2", "web-2");
 }
 
 main();
