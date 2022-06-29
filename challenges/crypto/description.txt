@@ -1,3 +1,1 @@
-We found our one of our agent missing but his last file he left open is the base64-48.
-Can you help us recover the original text?
-
+We found out, that one of our agents is missing but his last file he left open is the base64-8. He also left a matrjoska doll next to the message. Not sure what that means. Can you help us recover the original text?
