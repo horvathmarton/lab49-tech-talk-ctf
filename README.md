@@ -35,12 +35,12 @@ Material for the Lab49 internal CTF.
 - [x] Add CSS to make the site look nicer
 - [x] Add challenge type explanations
 - [x] Unify flag formats
-- [ ] Add hints
+- [ ] ~Add hints~
 - [x] Build the binary for Linux
 - [x] Build the binary for Windows
-- [ ] Unify the descriptions
+- [x] Unify the descriptions
 - [ ] Create action CD
-- [ ] Align titles with the navigation buttons
-- [ ] Add submit button to challenges
+- [x] Align titles with the navigation buttons
+- [x] Add submit button to challenges
 - [x] Align longer descriptions
 - [x] Use the same challenge name as in the list

@@ -1,55 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{{ title }}</title>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="/tailwind.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/core.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/md5.js"></script>
-    <script src="./auth.js"></script>
-  </head>
-  <body
-    class="grid h-screen place-items-center prose font-press-start max-w-full mx-20"
-  >
-    <h1 class="text-primary">{{ title }}</h1>
 
-    <a href="/" class="btn btn-primary absolute top-7 left-7">Back</a>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{ title }}</title>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/tailwind.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/core.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/md5.js"></script>
+  <script src="./auth.js"></script>
+</head>
 
-    <h2 class="text-justify">{{ description }}</h2>
+<body class="grid h-screen place-items-center prose font-press-start max-w-full mx-20">
+  <h1 class="text-primary mt-9">{{ title }}</h1>
 
-    <div class="grid">
-      <label for="username"><b>Username</b></label>
-      <input
-        type="text"
-        placeholder="Enter Username"
-        name="username"
-        id="username"
-        class="text-neutral px-1"
-        required
-      />
+  <a href="/" class="btn btn-primary absolute top-7 left-7">Back</a>
 
-      <label for="password" class="mt-8"><b>Password</b></label>
-      <input
-        type="password"
-        placeholder="Enter Password"
-        name="password"
-        id="password"
-        class="text-neutral px-1"
-        required
-      />
+  <h2 class="text-justify">{{ description }}</h2>
 
-      <button onclick="login()" class="btn btn-primary mt-10">Login</button>
-    </div>
+  <div class="grid">
+    <label for="username"><b>Username</b></label>
+    <input type="text" placeholder="Enter Username" name="username" id="username" class="text-neutral px-1" required />
 
-    <p>
-      (This is a web challenge, you goal is to bypass the authentication of the
-      site and log in as a user.)
-    </p>
-  </body>
+    <label for="password" class="mt-8"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="password" id="password" class="text-neutral px-1"
+      required />
+
+    <button onclick="login()" class="btn btn-primary mt-10">Login</button>
+  </div>
+
+  <p>
+    (This is a web challenge, you goal is to bypass the authentication of the
+    site and log in as a user.)
+  </p>
+</body>
+
 </html>
