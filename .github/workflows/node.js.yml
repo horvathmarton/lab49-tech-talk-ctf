@@ -15,17 +15,12 @@ jobs:
     name: Build app
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [12.x, 14.x, 16.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
-
     steps:
     - uses: actions/checkout@v3
     - name: Build and Style
       uses: actions/setup-node@v3
       with:
-        node-version: '14.x'
+        node-version: '17.x'
         cache: 'npm'
     - run: npm ci
     - run: npm run build:style
