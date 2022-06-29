@@ -58,8 +58,7 @@ function bundleReversingChallenge(folderName, title) {
   const description = readFileSync(join(folder, "description.txt")).toString();
 
   const binaryOptions = [
-    // { os: 'Windows', file: 'windows-binary' },
-    { os: "Windows", file: "osx-binary" },
+    { os: 'Windows', file: 'windows-binary.exe' },
     { os: "Mac", file: "osx-binary" },
     { os: "Linux", file: "linux-binary" },
   ];
