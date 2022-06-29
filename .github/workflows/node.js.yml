@@ -12,7 +12,7 @@ on:
 jobs:
   build:
 
-    name: build and style
+    name: Build app
     runs-on: ubuntu-latest
 
     strategy:
@@ -22,15 +22,11 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - name: Style with tailwind
+    - name: Build and Style
       uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
     - run: npm run build:style
-    
-    - name: Build app
-      with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'npm'
     - run: npm run bundle
+  
