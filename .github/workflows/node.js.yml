@@ -25,8 +25,9 @@ jobs:
     - name: Build and Style
       uses: actions/setup-node@v3
       with:
-        node-version: ${{ matrix.node-version }}
+        node-version: '14.x'
         cache: 'npm'
+    - run: npm ci
     - run: npm run build:style
     - run: npm run bundle
   
