@@ -37,7 +37,7 @@ Material for the Lab49 internal CTF.
 - [x] Unify flag formats
 - [ ] ~Add hints~
 - [x] Build the binary for Linux
-- [ ] Build the binary for Windows
+- [x] Build the binary for Windows
 - [x] Unify the descriptions
 - [ ] Create action CD
 - [x] Align titles with the navigation buttons
