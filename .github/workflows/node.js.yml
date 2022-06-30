@@ -20,4 +20,3 @@ jobs:
           node-version: "17.x"
           cache: "npm"
       - run: npm ci
-      - run: npm run bundle
