@@ -39,7 +39,7 @@ Material for the Lab49 internal CTF.
 - [x] Build the binary for Linux
 - [x] Build the binary for Windows
 - [x] Unify the descriptions
-- [ ] Create action CD
+- [x] Create action CD
 - [x] Align titles with the navigation buttons
 - [x] Add submit button to challenges
 - [x] Align longer descriptions
