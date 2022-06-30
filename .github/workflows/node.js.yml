@@ -6,8 +6,6 @@ name: LAB49 CTF CI
 on:
   push:
     branches: [ "master" ]
-  pull_request:
-    branches: [ "master" ]
 
 jobs:
   build:
@@ -23,6 +21,4 @@ jobs:
         node-version: '16.x'
         cache: 'npm'
     - run: npm ci
-    - run: npm run build:style
-    - run: npm run bundle
   
