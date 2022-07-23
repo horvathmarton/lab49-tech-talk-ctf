@@ -1,6 +1,6 @@
 # lab49-tech-talk-ctf
 
-Material for the Lab49 internal CTF.
+Material, infrastructure setup and bundler script for a small, lightweight CTF.
 
 ## Setup
 
