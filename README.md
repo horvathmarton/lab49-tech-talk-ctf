@@ -1,46 +1,33 @@
 # lab49-tech-talk-ctf
 
-Material, infrastructure setup and bundler script for a small, lightweight CTF.
+Welcome to the Lab49 Tech Talk Capture The Flag (CTF) repository. This repository provides the materials, infrastructure setup, and bundler script for a small, lightweight CTF.
 
 ## Setup
 
-- Run `npm install`.
+1. First, run `npm install` to install the necessary dependencies.
 
 ## Usage
 
-- Run `npm run build:style` if you change anything in the styling.
-- Run `npm run bundle` to create the `static` folder.
-- Run `npm run serve` to serve the challenges.
+1. If you make any changes to the styling, run `npm run build:style`.
+2. To create the `static` folder, run `npm run bundle`.
+3. To serve the challenges, execute `npm run serve`.
 
-## Plan
+## Challenges
+
+This CTF includes various challenges to test and improve your cybersecurity skills. The challenges are categorized as follows:
 
 - Demo 1: Base64 encoded flag.
-- Demo 2: Client side auth
-- Crypto: Base64 matrjoska.
-- OSINT: Twitter with wayback machine.
-- Reversing: Password check with password compiled into the binary.
-- Web 1: Flag hidden in the elements of the site (HTML, CSS, JS, robots.txt)
-- Web 2: Client side auth with weak hashed password
+- Demo 2: Client-side authentication.
+- Crypto: Base64 matryoshka.
+- OSINT: Twitter with the Wayback Machine.
+- Reversing: Password check with the password compiled into the binary.
+- Web 1: Flag hidden in the elements of the site (HTML, CSS, JS, robots.txt).
+- Web 2: Client-side authentication with a weakly hashed password.
 
-## TODO
+## Contribute
 
-- [x] Add example task 1
-- [x] Add example task 2
-- [x] Add web task 1 source
-- [x] Add web task 2 source
-- [x] Add OSINT description
-- [x] Add web server config to serve static content
-- [ ] ~Deploy web 1 to Heroku~
-- [ ] ~Deploy web 2 to Heroku~
-- [x] Add CSS to make the site look nicer
-- [x] Add challenge type explanations
-- [x] Unify flag formats
-- [ ] ~Add hints~
-- [x] Build the binary for Linux
-- [x] Build the binary for Windows
-- [x] Unify the descriptions
-- [x] Create action CD
-- [x] Align titles with the navigation buttons
-- [x] Add submit button to challenges
-- [x] Align longer descriptions
-- [x] Use the same challenge name as in the list
+We welcome contributions to this CTF project. If you have additional challenges, improvements, or ideas to share, please feel free to open issues or submit pull requests. Your input is valuable!
+
+## License
+
+This project is open-source and available under the MIT License. You are free to use and modify the code as you wish. For more details, please see the [LICENSE](LICENSE) file.
